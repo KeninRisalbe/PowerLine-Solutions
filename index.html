@@ -12,6 +12,10 @@
       --gris-metalico: #7D8896;
       --blanco: #FFFFFF;
     }
+    /* Dropdown personalizado */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 font-sans">
@@ -21,7 +25,14 @@
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
       <nav>
         <ul class="flex space-x-6 font-medium">
-          <li><a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios</a></li>
+          <li class="relative dropdown">
+            <a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios ▾</a>
+            <ul class="absolute hidden dropdown-menu bg-white text-black mt-2 rounded-lg shadow-lg w-56">
+              <li><a href="instalaciones.html" class="block px-4 py-2 hover:bg-gray-200">Instalaciones Eléctricas</a></li>
+              <li><a href="planos.html" class="block px-4 py-2 hover:bg-gray-200">Planos y Proyectos</a></li>
+              <li><a href="tableros.html" class="block px-4 py-2 hover:bg-gray-200">Tableros de Distribución</a></li>
+            </ul>
+          </li>
           <li><a href="#nosotros" class="hover:text-[var(--azul-electrico)]">Nosotros</a></li>
           <li><a href="#proyectos" class="hover:text-[var(--azul-electrico)]">Proyectos</a></li>
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
@@ -41,17 +52,26 @@
   <section id="servicios" class="py-20 container mx-auto px-6">
     <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
     <div class="grid md:grid-cols-3 gap-10">
-      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Instalaciones Eléctricas</h4>
-        <p class="text-gray-600">Residenciales, comerciales e industriales con certificación y seguridad.</p>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] flex flex-col justify-between">
+        <div>
+          <h4 class="text-xl font-semibold mb-3">Instalaciones Eléctricas</h4>
+          <p class="text-gray-600 mb-4">Residenciales, comerciales e industriales con certificación y seguridad.</p>
+        </div>
+        <a href="instalaciones.html" class="mt-4 inline-block bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg text-center">Ver más</a>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Planos y Proyectos</h4>
-        <p class="text-gray-600">Diseño de planos eléctricos y proyectos conforme a normativas vigentes.</p>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] flex flex-col justify-between">
+        <div>
+          <h4 class="text-xl font-semibold mb-3">Planos y Proyectos</h4>
+          <p class="text-gray-600 mb-4">Diseño de planos eléctricos y proyectos conforme a normativas vigentes.</p>
+        </div>
+        <a href="planos.html" class="mt-4 inline-block bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg text-center">Ver más</a>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Tableros de Distribución</h4>
-        <p class="text-gray-600">Fabricación de tableros de control y potencia para diferentes industrias.</p>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] flex flex-col justify-between">
+        <div>
+          <h4 class="text-xl font-semibold mb-3">Tableros de Distribución</h4>
+          <p class="text-gray-600 mb-4">Fabricación de tableros de control y potencia para diferentes industrias.</p>
+        </div>
+        <a href="tableros.html" class="mt-4 inline-block bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg text-center">Ver más</a>
       </div>
     </div>
   </section>
