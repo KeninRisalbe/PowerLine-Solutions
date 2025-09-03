@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Powerline Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --azul-electrico: #1E5EFF;
+      --azul-oscuro: #0A2342;
+      --gris-metalico: #7D8896;
+      --blanco: #FFFFFF;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Navbar -->
+  <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
+      <nav>
+        <ul class="flex space-x-6 font-medium">
+          <li><a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios</a></li>
+          <li><a href="#nosotros" class="hover:text-[var(--azul-electrico)]">Nosotros</a></li>
+          <li><a href="#proyectos" class="hover:text-[var(--azul-electrico)]">Proyectos</a></li>
+          <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-[var(--azul-electrico)] text-white text-center py-24">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Soluciones Eléctricas e Industriales</h2>
+    <p class="text-lg mb-6">Instalaciones con confianza, calidad y cumplimiento de normas</p>
+    <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">Contáctanos</a>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-xl font-semibold mb-3">Instalaciones Eléctricas</h4>
+        <p class="text-gray-600">Residenciales, comerciales e industriales con certificación y seguridad.</p>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-xl font-semibold mb-3">Planos y Proyectos</h4>
+        <p class="text-gray-600">Diseño de planos eléctricos y proyectos conforme a normativas vigentes.</p>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-xl font-semibold mb-3">Tableros de Distribución</h4>
+        <p class="text-gray-600">Fabricación de tableros de control y potencia para diferentes industrias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="bg-gray-100 py-20 px-6">
+    <div class="container mx-auto text-center md:text-left md:flex md:items-center md:space-x-10">
+      <div class="md:w-1/2">
+        <h3 class="text-3xl font-bold text-[var(--azul-oscuro)] mb-4">¿Quiénes somos?</h3>
+        <p class="text-gray-700 leading-relaxed">En <strong>Powerline Solutions</strong> ofrecemos servicios eléctricos con enfoque en seguridad, innovación y eficiencia. Nuestro objetivo es crecer hacia soluciones industriales y mineras, aportando experiencia y profesionalismo en cada proyecto.</p>
+      </div>
+      <div class="md:w-1/2 mt-8 md:mt-0">
+        <img src="https://img.icons8.com/ios-filled/500/1E5EFF/electrical.png" alt="Electricidad" class="mx-auto w-64">
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Proyectos Realizados</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?electric" alt="Proyecto 1" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Instalación Comercial</h4>
+          <p class="text-gray-600 text-sm">Sistema eléctrico completo para locales comerciales.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?industry" alt="Proyecto 2" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Tablero Industrial</h4>
+          <p class="text-gray-600 text-sm">Diseño y montaje de tableros para líneas de producción.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?factory" alt="Proyecto 3" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Planta de Energía</h4>
+          <p class="text-gray-600 text-sm">Instalaciones eléctricas de alta confiabilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-[var(--azul-oscuro)] text-white py-20 px-6">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
+      <p class="mb-6 text-gray-300">Solicita una cotización o agenda una visita técnica.</p>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
+        <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
+        <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
+        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
+    © 2025 Powerline Solutions – Todos los derechos reservados.
+  </footer>
+</body>
+</html>
