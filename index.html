@@ -3,70 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PowerLine Solutions</title>
+  <title>Powerline Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+    :root {
+      --azul-electrico: #1E5EFF;
+      --azul-oscuro: #0A2342;
+      --gris-metalico: #7D8896;
+      --blanco: #FFFFFF;
     }
 
-    header {
-      background-color: #0A192F;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-      color: #64FFDA;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    nav ul li {
-      margin-left: 20px;
-      position: relative; /* importante para el dropdown */
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #64FFDA;
-    }
-
-    /* Dropdown */
+    /* Dropdown con animación */
     nav ul li ul {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
       position: absolute;
       top: 100%;
       left: 0;
-      background-color: #112240;
+      background-color: var(--azul-oscuro);
       list-style: none;
       padding: 10px 0;
       margin: 0;
-      min-width: 180px;
-      border-radius: 5px;
+      min-width: 200px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      transform: translateY(10px);
+      z-index: 50;
     }
 
-    nav ul li ul li {
-      margin: 0;
-      padding: 0;
+    nav ul li:hover ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     nav ul li ul li a {
@@ -75,114 +43,123 @@
       color: white;
       text-decoration: none;
       font-weight: normal;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav ul li ul li a:hover {
-      background-color: #0A192F;
-      color: #64FFDA;
-    }
-
-    /* Mostrar el menú cuando el cursor esté sobre "Servicios" o en el submenú */
-    nav ul li:hover ul {
-      display: block;
-    }
-
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .service-card {
-      background-color: #112240;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s;
-      color: white;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-card h3 {
-      color: #64FFDA;
-    }
-
-    .service-card a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #64FFDA;
-      color: #0A192F;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .service-card a:hover {
-      background-color: #52e0c4;
-    }
-
-    footer {
-      background-color: #0A192F;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      background-color: #112a4b;
+      color: var(--azul-electrico);
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>PowerLine Solutions</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li>
-          <a href="#">Servicios ▼</a>
-          <ul>
-            <li><a href="instalaciones.html">Instalaciones Eléctricas</a></li>
-            <li><a href="planos.html">Planos Eléctricos</a></li>
-            <li><a href="tableros.html">Tableros Eléctricos</a></li>
-          </ul>
-        </li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Navbar -->
+  <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4 relative">
+      <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
+      <nav>
+        <ul class="flex space-x-6 font-medium relative">
+          <li><a href="#inicio" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
+          <li class="relative">
+            <a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios ▾</a>
+            <ul class="absolute">
+              <li><a href="instalaciones.html">Instalaciones Eléctricas</a></li>
+              <li><a href="planos.html">Planos y Proyectos</a></li>
+              <li><a href="tableros.html">Tableros de Distribución</a></li>
+            </ul>
+          </li>
+          <li><a href="#nosotros" class="hover:text-[var(--azul-electrico)]">Nosotros</a></li>
+          <li><a href="#proyectos" class="hover:text-[var(--azul-electrico)]">Proyectos</a></li>
+          <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Nuestros Servicios</h2>
-    <div class="services">
-      <div class="service-card">
-        <h3>Instalaciones Eléctricas</h3>
-        <p>Servicios domiciliarios e industriales, mantenimiento y reparación.</p>
-        <a href="instalaciones.html">Ver más</a>
+  <!-- Hero -->
+  <section id="inicio" class="bg-[var(--azul-electrico)] text-white text-center py-24">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Soluciones Eléctricas e Industriales</h2>
+    <p class="text-lg mb-6">Instalaciones con confianza, calidad y cumplimiento de normas</p>
+    <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">Contáctanos</a>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
+    <div class="grid md:grid-cols-3 gap-10">
+      <a href="instalaciones.html" class="block bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-2xl transition">
+        <h4 class="text-xl font-semibold mb-3">Instalaciones Eléctricas</h4>
+        <p class="text-gray-600">Residenciales, comerciales e industriales con certificación y seguridad.</p>
+      </a>
+      <a href="planos.html" class="block bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-2xl transition">
+        <h4 class="text-xl font-semibold mb-3">Planos y Proyectos</h4>
+        <p class="text-gray-600">Diseño de planos eléctricos y proyectos conforme a normativas vigentes.</p>
+      </a>
+      <a href="tableros.html" class="block bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-2xl transition">
+        <h4 class="text-xl font-semibold mb-3">Tableros de Distribución</h4>
+        <p class="text-gray-600">Fabricación de tableros de control y potencia para diferentes industrias.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="bg-gray-100 py-20 px-6">
+    <div class="container mx-auto text-center md:text-left md:flex md:items-center md:space-x-10">
+      <div class="md:w-1/2">
+        <h3 class="text-3xl font-bold text-[var(--azul-oscuro)] mb-4">¿Quiénes somos?</h3>
+        <p class="text-gray-700 leading-relaxed">En <strong>Powerline Solutions</strong> ofrecemos servicios eléctricos con enfoque en seguridad, innovación y eficiencia. Nuestro objetivo es crecer hacia soluciones industriales y mineras, aportando experiencia y profesionalismo en cada proyecto.</p>
       </div>
-      <div class="service-card">
-        <h3>Planos Eléctricos</h3>
-        <p>Diseño y elaboración de planos eléctricos certificados.</p>
-        <a href="planos.html">Ver más</a>
-      </div>
-      <div class="service-card">
-        <h3>Tableros Eléctricos</h3>
-        <p>Fabricación, montaje y mantenimiento de tableros eléctricos.</p>
-        <a href="tableros.html">Ver más</a>
+      <div class="md:w-1/2 mt-8 md:mt-0">
+        <img src="https://img.icons8.com/ios-filled/500/1E5EFF/electrical.png" alt="Electricidad" class="mx-auto w-64">
       </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 PowerLine Solutions - Todos los derechos reservados</p>
+  <!-- Proyectos -->
+  <section id="proyectos" class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Proyectos Realizados</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?electric" alt="Proyecto 1" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Instalación Comercial</h4>
+          <p class="text-gray-600 text-sm">Sistema eléctrico completo para locales comerciales.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?industry" alt="Proyecto 2" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Tablero Industrial</h4>
+          <p class="text-gray-600 text-sm">Diseño y montaje de tableros para líneas de producción.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x250/?factory" alt="Proyecto 3" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Planta de Energía</h4>
+          <p class="text-gray-600 text-sm">Instalaciones eléctricas de alta confiabilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-[var(--azul-oscuro)] text-white py-20 px-6">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
+      <p class="mb-6 text-gray-300">Solicita una cotización o agenda una visita técnica.</p>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
+        <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
+        <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
+        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
+    © 2025 Powerline Solutions – Todos los derechos reservados.
   </footer>
 </body>
 </html>
