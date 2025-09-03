@@ -12,21 +12,60 @@
       --gris-metalico: #7D8896;
       --blanco: #FFFFFF;
     }
+
+    /* Dropdown con animación */
+    nav ul li ul {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--azul-oscuro);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 200px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      transform: translateY(10px);
+      z-index: 50;
+    }
+
+    nav ul li:hover ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    nav ul li ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: normal;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav ul li ul li a:hover {
+      background-color: #112a4b;
+      color: var(--azul-electrico);
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 font-sans">
   <!-- Navbar -->
   <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
+    <div class="container mx-auto flex justify-between items-center p-4 relative">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
       <nav>
-        <ul class="flex space-x-6 font-medium">
-          <li class="relative group">
-            <a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios</a>
-            <ul class="absolute hidden group-hover:block bg-white text-black mt-2 rounded-lg shadow-lg w-48">
-              <li><a href="instalaciones.html" class="block px-4 py-2 hover:bg-gray-100">Instalaciones</a></li>
-              <li><a href="planos.html" class="block px-4 py-2 hover:bg-gray-100">Planos</a></li>
-              <li><a href="tableros.html" class="block px-4 py-2 hover:bg-gray-100">Tableros</a></li>
+        <ul class="flex space-x-6 font-medium relative">
+          <li><a href="#inicio" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
+          <li class="relative">
+            <a href="#servicios" class="hover:text-[var(--azul-electrico)]">Servicios ▾</a>
+            <ul class="absolute">
+              <li><a href="instalaciones.html">Instalaciones Eléctricas</a></li>
+              <li><a href="planos.html">Planos y Proyectos</a></li>
+              <li><a href="tableros.html">Tableros de Distribución</a></li>
             </ul>
           </li>
           <li><a href="#nosotros" class="hover:text-[var(--azul-electrico)]">Nosotros</a></li>
@@ -38,7 +77,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="bg-[var(--azul-electrico)] text-white text-center py-24">
+  <section id="inicio" class="bg-[var(--azul-electrico)] text-white text-center py-24">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Soluciones Eléctricas e Industriales</h2>
     <p class="text-lg mb-6">Instalaciones con confianza, calidad y cumplimiento de normas</p>
     <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">Contáctanos</a>
@@ -68,16 +107,7 @@
     <div class="container mx-auto text-center md:text-left md:flex md:items-center md:space-x-10">
       <div class="md:w-1/2">
         <h3 class="text-3xl font-bold text-[var(--azul-oscuro)] mb-4">¿Quiénes somos?</h3>
-        <p class="text-gray-700 leading-relaxed">
-          En <strong>Powerline Solutions</strong> nos especializamos en servicios eléctricos de alta calidad, combinando seguridad, innovación y eficiencia en cada proyecto. 
-          Ofrecemos soluciones confiables y adaptadas a las necesidades de nuestros clientes, tanto en instalaciones residenciales como en el sector industrial.
-        </p>
-        <p class="text-gray-700 leading-relaxed mt-4">
-          Con un enfoque práctico y profesional, garantizamos la seguridad de las personas y la continuidad de los procesos, implementando sistemas modernos y sostenibles que aseguran eficiencia energética y mayor durabilidad.
-        </p>
-        <p class="text-gray-700 leading-relaxed mt-4">
-          Nuestra misión es acompañar a empresas e industrias en su crecimiento, asegurando operaciones eléctricas seguras, estables y eficientes.
-        </p>
+        <p class="text-gray-700 leading-relaxed">En <strong>Powerline Solutions</strong> ofrecemos servicios eléctricos con enfoque en seguridad, innovación y eficiencia. Nuestro objetivo es crecer hacia soluciones industriales y mineras, aportando experiencia y profesionalismo en cada proyecto.</p>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0">
         <img src="https://img.icons8.com/ios-filled/500/1E5EFF/electrical.png" alt="Electricidad" class="mx-auto w-64">
@@ -118,16 +148,26 @@
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
       <p class="mb-6 text-gray-300">Solicita una cotización o agenda una visita técnica.</p>
-      <div class="mb-6">
-        <p>📞 <strong>98352761</strong></p>
-        <p>📧 <strong>powerlinesolutionperu@gmail.com</strong></p>
+
+      <!-- Info de contacto -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
+        <a href="tel:+5198352761" class="flex items-center gap-2 bg-[var(--azul-electrico)] hover:bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md transition">
+          📞 98352761
+        </a>
+        <a href="mailto:powerlinesolutionperu@gmail.com" class="flex items-center gap-2 bg-[var(--azul-electrico)] hover:bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md transition">
+          📧 powerlinesolutionperu@gmail.com
+        </a>
+        <a href="https://wa.me/5198352761" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-lg shadow-md transition">
+          💬 WhatsApp
+        </a>
       </div>
-      <a href="https://wa.me/5198352761?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios." target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md mb-8">💬 Escríbenos por WhatsApp</a>
-      <form action="https://formspree.io/f/mqakrbpo" method="POST" class="max-w-xl mx-auto space-y-4">
-        <input type="text" name="nombre" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
-        <input type="email" name="correo" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
-        <textarea name="mensaje" placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
-        <button type="submit" class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition">Enviar</button>
+
+      <!-- Formulario -->
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
+        <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
+        <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
+        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition">Enviar</button>
       </form>
     </div>
   </section>
