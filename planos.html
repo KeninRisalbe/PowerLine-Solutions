@@ -13,16 +13,51 @@
       --blanco: #FFFFFF;
     }
 
-    /* Overlay del menú */
-    #mobileMenuOverlay {
+    /* Sidebar móvil */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
       transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
     #mobileMenu {
-      transition: transform 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%; /* 👈 Igual que instalaciones */
+      max-width: 320px;
+      height: 100%;
+      background: var(--azul-oscuro);
       transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      padding-top: 80px;
     }
-    #mobileMenu.open {
+    #mobileMenu.active {
       transform: translateX(0);
+    }
+    #mobileMenu a {
+      display: block;
+      padding: 15px;
+      font-size: 1.1rem;
+      color: white;
+      transition: background 0.3s;
+    }
+    #mobileMenu a:hover {
+      background: var(--azul-electrico);
+    }
+    #menuToggle {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -30,87 +65,88 @@
 
   <!-- Navbar -->
   <header class="bg-[var(--azul-oscuro)] text-white shadow-md fixed w-full top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center p-4">
+    <div class="container mx-auto flex justify-between items-center p-4 relative">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
-      <nav class="hidden md:flex">
+      <nav class="hidden md:block">
         <ul class="flex space-x-6 font-medium">
           <li><a href="index.html" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
           <li><a href="instalaciones.html" class="hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
-          <li><a href="planos.html" class="text-[var(--azul-electrico)] font-semibold">Planos</a></li>
+          <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
           <li><a href="tableros.html" class="hover:text-[var(--azul-electrico)]">Tableros</a></li>
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
-      <!-- Botón menú móvil -->
-      <button id="menuBtn" class="md:hidden focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+      <div id="menuToggle" class="md:hidden text-3xl">☰</div>
     </div>
   </header>
 
-  <!-- Overlay y Menú móvil -->
-  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-45 hidden z-40"></div>
-  <div id="mobileMenu" class="fixed top-0 left-0 h-full w-[clamp(220px,50vw,320px)] bg-[var(--azul-oscuro)] text-white z-50 p-6">
-    <button id="closeMenuBtn" class="text-white text-2xl mb-6 focus:outline-none">✕</button>
-    <ul class="space-y-4 font-medium">
-      <li><a href="index.html" class="block hover:text-[var(--azul-electrico)]">Inicio</a></li>
-      <li><a href="instalaciones.html" class="block hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
-      <li><a href="planos.html" class="block text-[var(--azul-electrico)] font-semibold">Planos</a></li>
-      <li><a href="tableros.html" class="block hover:text-[var(--azul-electrico)]">Tableros</a></li>
-      <li><a href="#contacto" class="block hover:text-[var(--azul-electrico)]">Contacto</a></li>
-    </ul>
+  <!-- Overlay y Sidebar móvil -->
+  <div id="overlay"></div>
+  <div id="mobileMenu">
+    <a href="index.html">Inicio</a>
+    <a href="instalaciones.html">Instalaciones</a>
+    <a href="planos.html">Planos</a>
+    <a href="tableros.html">Tableros</a>
+    <a href="#contacto">Contacto</a>
   </div>
 
   <!-- Hero -->
-  <section class="bg-[var(--azul-electrico)] text-white text-center py-28 px-4 mt-16">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Planos y Proyectos Eléctricos</h2>
-    <p class="text-lg mb-6 max-w-2xl mx-auto">
-      Diseño y desarrollo de planos eléctricos con precisión y cumplimiento de normas.
-    </p>
-    <!-- Botón WhatsApp -->
-    <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20planos%20eléctricos."
-       target="_blank"
-       class="inline-block bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">
-       Solicitar Información
-    </a>
+  <section class="bg-[var(--azul-electrico)] text-white text-center py-20 mt-16 px-4">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4">Planos Eléctricos Profesionales</h2>
+    <p class="text-base md:text-lg mb-6">Diseño y elaboración de planos eléctricos detallados para proyectos residenciales, comerciales e industriales.</p>
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
+      <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">
+        Solicitar Información
+      </a>
+      <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20planos%20eléctricos." 
+         target="_blank" 
+         class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition flex items-center justify-center">
+        💬 WhatsApp
+      </a>
+    </div>
   </section>
 
   <!-- Servicios de Planos -->
-  <section class="py-20 container mx-auto px-6">
-    <h3 class="text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios en Planos</h3>
+  <section class="py-16 md:py-20 container mx-auto px-4 md:px-6">
+    <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios en Planos</h3>
     <div class="grid md:grid-cols-2 gap-8">
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Planos Residenciales</h4>
-        <p class="text-gray-600">Diseño de planos eléctricos para viviendas unifamiliares, multifamiliares y conjuntos habitacionales.</p>
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Planos Unifilares</h4>
+        <p class="text-gray-600 text-sm md:text-base">Representación clara de las conexiones eléctricas principales de un sistema.</p>
       </div>
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Planos Comerciales</h4>
-        <p class="text-gray-600">Elaboración de proyectos eléctricos para locales, oficinas y centros comerciales.</p>
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Planos de Distribución</h4>
+        <p class="text-gray-600 text-sm md:text-base">Diseño de redes eléctricas en edificaciones para un suministro seguro y eficiente.</p>
       </div>
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Planos Industriales</h4>
-        <p class="text-gray-600">Desarrollo de diagramas eléctricos para plantas industriales, fábricas y minería.</p>
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Diagramas de Control</h4>
+        <p class="text-gray-600 text-sm md:text-base">Planos detallados para sistemas de automatización y control industrial.</p>
       </div>
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-        <h4 class="text-xl font-semibold mb-3">Cálculo de Cargas</h4>
-        <p class="text-gray-600">Análisis de carga eléctrica para garantizar eficiencia y seguridad en la instalación.</p>
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Planos Industriales</h4>
+        <p class="text-gray-600 text-sm md:text-base">Soluciones personalizadas para plantas de producción y operaciones mineras.</p>
       </div>
     </div>
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="bg-[var(--azul-oscuro)] text-white py-20 px-6">
+  <section id="contacto" class="bg-[var(--azul-oscuro)] text-white py-16 md:py-20 px-4">
     <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
-      <p class="mb-6 text-gray-300">Solicita una cotización o asesoría personalizada en proyectos eléctricos.</p>
+      <h3 class="text-2xl md:text-3xl font-bold mb-6">Contáctanos</h3>
+      <p class="mb-6 text-gray-300 text-sm md:text-base">Solicita una cotización o asesoría personalizada en planos eléctricos.</p>
       <form class="max-w-xl mx-auto space-y-4">
         <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
         <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
         <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
-        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition">Enviar</button>
+        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition w-full md:w-auto">Enviar</button>
       </form>
+      <div class="mt-6">
+        <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20planos%20eléctricos." 
+           target="_blank" 
+           class="inline-block bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+          📲 Escríbenos por WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
@@ -121,40 +157,28 @@
 
   <!-- Script menú móvil -->
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('mobileMenuOverlay');
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("overlay");
 
-    function openMenu() {
-      mobileMenu.classList.add('open');
-      overlay.classList.remove('hidden');
-      overlay.style.opacity = '1';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      mobileMenu.classList.remove('open');
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.classList.add('hidden'), 300);
-      document.body.style.overflow = 'auto';
-    }
-
-    menuBtn.addEventListener('click', openMenu);
-    closeMenuBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-
-    // Cerrar con tecla ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") closeMenu();
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      overlay.classList.toggle("active");
     });
 
-    // Cerrar al hacer click en un link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+    overlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+      });
     });
   </script>
+
 </body>
 </html>
-
 
