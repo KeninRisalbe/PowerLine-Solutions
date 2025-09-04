@@ -13,7 +13,7 @@
       --blanco: #FFFFFF;
     }
 
-    /* Dropdown con animación escritorio */
+    /* Dropdown escritorio */
     nav ul li ul {
       opacity: 0;
       visibility: hidden;
@@ -30,33 +30,46 @@
       transform: translateY(10px);
       z-index: 50;
     }
-
     nav ul li:hover ul {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
-
     nav ul li ul li a {
       display: block;
       padding: 10px 15px;
       color: white;
       text-decoration: none;
-      font-weight: normal;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s;
     }
-
     nav ul li ul li a:hover {
       background-color: #112a4b;
       color: var(--azul-electrico);
     }
 
-    /* Menú móvil overlay */
-    #mobileMenu {
+    /* Sidebar móvil */
+    #overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    #mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      max-width: 280px;
       height: 100%;
       background: var(--azul-oscuro);
       transform: translateX(-100%);
@@ -70,9 +83,8 @@
     #mobileMenu a {
       display: block;
       padding: 15px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: white;
-      text-align: center;
       transition: background 0.3s;
     }
     #mobileMenu a:hover {
@@ -88,7 +100,6 @@
   <header class="bg-[var(--azul-oscuro)] text-white shadow-md fixed w-full top-0 z-50">
     <div class="container mx-auto flex justify-between items-center p-4 relative">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
-      <!-- Menu escritorio -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6 font-medium relative">
           <li><a href="#inicio" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
@@ -105,12 +116,12 @@
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
-      <!-- Botón móvil -->
       <div id="menuToggle" class="md:hidden text-3xl">☰</div>
     </div>
   </header>
 
-  <!-- Menú móvil overlay -->
+  <!-- Overlay y Sidebar móvil -->
+  <div id="overlay"></div>
   <div id="mobileMenu">
     <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
@@ -194,8 +205,6 @@
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
       <p class="mb-6 text-gray-300">Solicita una cotización o agenda una visita técnica.</p>
-
-      <!-- Info de contacto -->
       <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
         <a href="tel:+5198352761" class="flex items-center gap-2 bg-[var(--azul-electrico)] hover:bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md transition">
           📞 98352761
@@ -207,8 +216,6 @@
           💬 WhatsApp
         </a>
       </div>
-
-      <!-- Formulario -->
       <form class="max-w-xl mx-auto space-y-4">
         <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
         <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
@@ -227,10 +234,19 @@
   <script>
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("overlay");
+
     menuToggle.addEventListener("click", () => {
       mobileMenu.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      overlay.classList.remove("active");
     });
   </script>
 </body>
 </html>
+
 
