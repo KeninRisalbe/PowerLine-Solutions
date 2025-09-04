@@ -12,16 +12,63 @@
       --gris-metalico: #7D8896;
       --blanco: #FFFFFF;
     }
+
+    /* Sidebar móvil */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    #mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      max-width: 320px;
+      height: 100%;
+      background: var(--azul-oscuro);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      padding-top: 80px;
+    }
+    #mobileMenu.active {
+      transform: translateX(0);
+    }
+    #mobileMenu a {
+      display: block;
+      padding: 15px;
+      font-size: 1.1rem;
+      color: white;
+      transition: background 0.3s;
+    }
+    #mobileMenu a:hover {
+      background: var(--azul-electrico);
+    }
+    #menuToggle {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 font-sans">
 
   <!-- Navbar -->
-  <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
+  <header class="bg-[var(--azul-oscuro)] text-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center p-4 relative">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
-      <nav>
-        <ul class="flex flex-wrap gap-4 font-medium text-sm md:text-base">
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6 font-medium">
           <li><a href="index.html" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
           <li><a href="instalaciones.html" class="hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
           <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
@@ -29,11 +76,22 @@
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
+      <div id="menuToggle" class="md:hidden text-3xl">☰</div>
     </div>
   </header>
 
+  <!-- Overlay y Sidebar móvil -->
+  <div id="overlay"></div>
+  <div id="mobileMenu">
+    <a href="index.html">Inicio</a>
+    <a href="instalaciones.html">Instalaciones</a>
+    <a href="planos.html">Planos</a>
+    <a href="tableros.html">Tableros</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
   <!-- Hero -->
-  <section class="bg-[var(--azul-electrico)] text-white text-center py-16 md:py-20 px-4">
+  <section class="bg-[var(--azul-electrico)] text-white text-center py-20 mt-16 px-4">
     <h2 class="text-3xl md:text-5xl font-bold mb-4">Tableros de Distribución y Control</h2>
     <p class="text-base md:text-lg mb-6">Diseño, fabricación y montaje de tableros eléctricos para todo tipo de industrias.</p>
     <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -96,6 +154,30 @@
   <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
     © 2025 Powerline Solutions – Todos los derechos reservados.
   </footer>
+
+  <!-- Script menú móvil -->
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("overlay");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
