@@ -1,29 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Powerline Solutions - Inicio</title>
-  <title>Powerline Solutions - Instalaciones Eléctricas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-@@ -13,7 +13,6 @@
+      --azul-oscuro: #001F3F;
+      --azul-electrico: #007BFF;
       --blanco: #FFFFFF;
     }
 
-    /* Reset de márgenes para eliminar franja blanca */
+    /* Reset de márgenes */
     html, body {
       margin: 0;
       padding: 0;
-@@ -46,7 +45,6 @@
-      transition: transform 0.28s ease;
-      z-index: 50;
-      padding-top: 84px;
-      -webkit-overflow-scrolling: touch;
-      overflow-y: auto;
-    }
-    #mobileMenu.active {
-@@ -65,28 +63,7 @@
-      color: var(--azul-electrico);
     }
 
     /* WhatsApp FAB */
@@ -47,32 +39,24 @@
     }
     .whatsapp-fab:active { transform: scale(.98); }
 
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; margin:0; padding:0; }
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
     main { padding-top: 84px; }
-
-    @media (min-width: 768px) {
-@@ -97,18 +74,10 @@
+  </style>
+</head>
 <body class="bg-white text-gray-900 font-sans antialiased">
 
   <!-- Header -->
-  <header class="bg-[var(--azul-oscuro)] text-white m-0 p-0">
   <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
 
-      <!-- Botón hamburguesa -->
-      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
       <!-- Menú desktop -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6 font-medium">
-@@ -119,6 +88,14 @@ <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
+          <li><a href="index.html" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
+          <li><a href="instalaciones.html" class="hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
+          <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
+          <li><a href="tableros.html" class="hover:text-[var(--azul-electrico)]">Tableros</a></li>
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
@@ -87,45 +71,13 @@
     </div>
   </header>
 
-@@ -132,85 +109,40 @@ <h2 class="text-xl font-bold text-white">Menú</h2>
-      </div>
-    </div>
-    <nav class="mt-2">
-      <a href="index.html" class="pl-6 font-semibold text-[var(--azul-electrico)]">Inicio</a>
-      <a href="instalaciones.html" class="pl-6">Instalaciones</a>
-      <a href="planos.html" class="pl-6">Planos</a>
-      <a href="tableros.html" class="pl-6">Tableros</a>
-      <a href="#contacto" class="pl-6">Contacto</a>
-      <a href="index.html" class="font-semibold text-[var(--azul-electrico)]">Inicio</a>
-      <a href="instalaciones.html">Instalaciones</a>
-      <a href="planos.html">Planos</a>
-      <a href="tableros.html">Tableros</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </aside>
-
   <!-- Hero -->
   <main>
-    <!-- Hero -->
-    <section class="bg-[var(--azul-electrico)] text-white text-center py-20 m-0">
-      <div class="px-6">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Bienvenido a Powerline Solutions</h2>
-        <p class="text-lg max-w-xl mx-auto">
-          Soluciones eléctricas seguras, confiables y modernas para hogares, edificios y empresas.
-        </p>
-      </div>
-    </section>
-
-    <!-- Servicios principales -->
-    <section class="py-14 container mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-6 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="instalaciones.html" class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-xl transition">
-          <h4 class="text-xl font-semibold mb-2">Instalaciones</h4>
-          <p class="text-gray-600">Trabajos eléctricos seguros y profesionales en viviendas y comercios.</p>
     <section class="bg-[var(--azul-electrico)] text-white text-center py-20 px-4">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">Bienvenido a Powerline Solutions</h2>
-      <p class="text-base md:text-lg mb-6">Instalaciones eléctricas seguras, eficientes y con normativa vigente.</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Bienvenido a Powerline Solutions</h2>
+      <p class="text-base md:text-lg mb-6">
+        Instalaciones eléctricas seguras, eficientes y con normativa vigente.
+      </p>
       <div class="flex flex-col md:flex-row gap-4 justify-center">
         <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">
           Solicitar Información
@@ -137,10 +89,30 @@
         <a href="tableros.html" class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-xl transition">
           <h4 class="text-xl font-semibold mb-2">Tableros</h4>
           <p class="text-gray-600">Fabricación e instalación de tableros eléctricos.</p>
+        </a>
         <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20instalaciones%20eléctricas." 
            target="_blank" 
            class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition flex items-center justify-center">
           💬 WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Servicios principales -->
+    <section class="py-14 container mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="instalaciones.html" class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2">Instalaciones</h4>
+          <p class="text-gray-600">Trabajos eléctricos seguros y profesionales en viviendas y comercios.</p>
+        </a>
+        <a href="planos.html" class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2">Planos</h4>
+          <p class="text-gray-600">Diseño eléctrico y planos técnicos certificados.</p>
+        </a>
+        <a href="tableros.html" class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)] hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2">Tableros</h4>
+          <p class="text-gray-600">Fabricación e instalación de tableros eléctricos.</p>
         </a>
       </div>
     </section>
@@ -167,7 +139,6 @@
         💬 Escribir por WhatsApp
       </a>
     </section>
-    <!-- Aquí iría el resto del contenido, servicios, contacto, etc. -->
   </main>
 
   <!-- FAB WhatsApp -->
@@ -184,30 +155,14 @@
   <footer class="bg-[var(--azul-oscuro)] text-white py-6 mt-12 text-center px-4">
     <p class="mb-2">📞 <strong>+51 983527661</strong> &nbsp; | &nbsp; 📧 <a href="mailto:powerlinesolutionperu@gmail.com" class="underline">powerlinesolutionperu@gmail.com</a></p>
     <p class="text-sm">© 2025 Powerline Solutions. Todos los derechos reservados.</p>
-  <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
-    © 2025 Powerline Solutions – Todos los derechos reservados.
   </footer>
 
   <!-- Scripts -->
-  <!-- Script menú móvil -->
   <script>
     (function() {
       const menuBtn = document.getElementById('menu-btn');
-@@ -235,12 +167,15 @@ <h3 class="text-3xl font-bold mb-6 text-[var(--azul-oscuro)]">Contáctanos</h3>
-      closeBtn && closeBtn.addEventListener('click', closeMenu);
-      overlay && overlay.addEventListener('click', closeMenu);
-
-      document.querySelectorAll("#mobileMenu a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
-      const links = mobileMenu.querySelectorAll('a');
-      links.forEach(a => a.addEventListener('click', closeMenu));
+      // Aquí iría la lógica para menú móvil si la agregas
     })();
   </script>
-
 </body>
 </html>
