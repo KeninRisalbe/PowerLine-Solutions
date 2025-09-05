@@ -26,12 +26,16 @@
       transition: opacity 0.3s ease;
       z-index: 90;
     }
-    #overlay.active { opacity: 1; visibility: visible; }
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
     #mobileMenu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 50%; max-width: 320px;
+      width: 50%;
+      max-width: 320px;
       height: 100%;
       background: var(--azul-oscuro);
       transform: translateX(-100%);
@@ -39,16 +43,23 @@
       z-index: 100;
       padding-top: 80px;
     }
-    #mobileMenu.active { transform: translateX(0); }
+    #mobileMenu.active {
+      transform: translateX(0);
+    }
     #mobileMenu a {
       display: block;
-      padding: 15px;
-      font-size: 1.1rem;
+      padding: 18px;
+      font-size: 1.2rem;
       color: white;
+      border-bottom: 1px solid #4b5563; /* línea gris separadora */
       transition: background 0.3s;
     }
-    #mobileMenu a:hover { background: var(--azul-electrico); }
-    #menuToggle { cursor: pointer; }
+    #mobileMenu a:hover {
+      background: var(--azul-electrico);
+    }
+    #menuToggle {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 font-sans">
@@ -96,33 +107,25 @@
     </div>
   </section>
 
-  <!-- Servicios -->
+  <!-- Servicios de Tableros -->
   <section class="py-16 md:py-20 container mx-auto px-4 md:px-6">
     <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Nuestros Servicios en Tableros</h3>
     <div class="grid md:grid-cols-2 gap-8">
-      <!-- Card -->
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
         <h4 class="text-lg md:text-xl font-semibold mb-3">Tableros de Distribución</h4>
         <p class="text-gray-600 text-sm md:text-base">Fabricación de tableros para distribución de energía en residencias, comercios e industrias.</p>
-        <div class="h-[1px] bg-gray-300 my-4"></div>
       </div>
-      <!-- Card -->
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
         <h4 class="text-lg md:text-xl font-semibold mb-3">Tableros de Control</h4>
         <p class="text-gray-600 text-sm md:text-base">Montaje de tableros de control para procesos industriales y automatización.</p>
-        <div class="h-[1px] bg-gray-300 my-4"></div>
       </div>
-      <!-- Card -->
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
         <h4 class="text-lg md:text-xl font-semibold mb-3">Tableros de Potencia</h4>
         <p class="text-gray-600 text-sm md:text-base">Diseño de tableros de potencia para maquinaria de gran capacidad.</p>
-        <div class="h-[1px] bg-gray-300 my-4"></div>
       </div>
-      <!-- Card -->
       <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
         <h4 class="text-lg md:text-xl font-semibold mb-3">Tableros Industriales y Mineros</h4>
         <p class="text-gray-600 text-sm md:text-base">Soluciones robustas para plantas industriales y operaciones mineras.</p>
-        <div class="h-[1px] bg-gray-300 my-4"></div>
       </div>
     </div>
   </section>
@@ -163,10 +166,12 @@
       mobileMenu.classList.toggle("active");
       overlay.classList.toggle("active");
     });
+
     overlay.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
       overlay.classList.remove("active");
     });
+
     document.querySelectorAll("#mobileMenu a").forEach(link => {
       link.addEventListener("click", () => {
         mobileMenu.classList.remove("active");
@@ -174,5 +179,7 @@
       });
     });
   </script>
+
 </body>
 </html>
+
