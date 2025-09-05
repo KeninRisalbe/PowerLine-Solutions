@@ -13,86 +13,112 @@
       --blanco: #FFFFFF;
     }
 
-    /* Sidebar móvil */
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Overlay */
     #overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
+      inset: 0;
+      background: rgba(0,0,0,0.45);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 90;
+      transition: opacity 0.25s ease;
+      z-index: 40;
     }
     #overlay.active {
       opacity: 1;
       visibility: visible;
     }
+
+    /* Sidebar móvil */
     #mobileMenu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 50%;
-      max-width: 320px;
       height: 100%;
+      width: clamp(220px, 50vw, 320px);
       background: var(--azul-oscuro);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 100;
-      padding-top: 80px;
+      transform: translateX(-110%);
+      transition: transform 0.28s ease;
+      z-index: 50;
+      padding-top: 84px;
+      overflow-y: auto;
     }
     #mobileMenu.active {
       transform: translateX(0);
     }
     #mobileMenu a {
       display: block;
-      padding: 18px;
-      font-size: 1.2rem;
-      color: white;
-      border-bottom: 1px solid #4b5563; /* línea gris separadora */
-      transition: background 0.3s;
+      padding: 14px 20px;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background .18s;
     }
     #mobileMenu a:hover {
-      background: var(--azul-electrico);
+      background: rgba(255,255,255,0.03);
+      color: var(--azul-electrico);
     }
-    #menuToggle {
-      cursor: pointer;
+
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
+    main { padding-top: 84px; }
+
+    @media (min-width: 768px) {
+      #mobileMenu, #overlay { display: none; }
     }
   </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body class="bg-white text-gray-900 font-sans antialiased">
 
-  <!-- Navbar -->
-  <header class="bg-[var(--azul-oscuro)] text-white shadow-md fixed w-full top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center p-4 relative">
+  <!-- Header -->
+  <header class="bg-[var(--azul-oscuro)] text-white">
+    <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
+
+      <!-- Menú desktop -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6 font-medium">
           <li><a href="index.html" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
           <li><a href="instalaciones.html" class="hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
           <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
-          <li><a href="tableros.html" class="hover:text-[var(--azul-electrico)]">Tableros</a></li>
+          <li><a href="tableros.html" class="text-[var(--azul-electrico)] font-semibold">Tableros</a></li>
           <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
-      <div id="menuToggle" class="md:hidden text-3xl">☰</div>
+
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </header>
 
-  <!-- Overlay y Sidebar móvil -->
+  <!-- Overlay + Sidebar -->
   <div id="overlay"></div>
-  <div id="mobileMenu">
-    <a href="index.html">Inicio</a>
-    <a href="instalaciones.html">Instalaciones</a>
-    <a href="planos.html">Planos</a>
-    <a href="tableros.html">Tableros</a>
-    <a href="#contacto">Contacto</a>
-  </div>
+  <aside id="mobileMenu">
+    <div class="px-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-xl font-bold text-white">Menú</h2>
+        <button id="close-btn" class="text-white text-2xl">✕</button>
+      </div>
+    </div>
+    <nav class="mt-2">
+      <a href="index.html">Inicio</a>
+      <a href="instalaciones.html">Instalaciones</a>
+      <a href="planos.html">Planos</a>
+      <a href="tableros.html" class="font-semibold text-[var(--azul-electrico)]">Tableros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </aside>
 
   <!-- Hero -->
-  <section class="bg-[var(--azul-electrico)] text-white text-center py-20 mt-16 px-4">
+  <section class="bg-[var(--azul-electrico)] text-white text-center py-20 px-4">
     <h2 class="text-3xl md:text-5xl font-bold mb-4">Tableros de Distribución y Control</h2>
     <p class="text-base md:text-lg mb-6">Diseño, fabricación y montaje de tableros eléctricos para todo tipo de industrias.</p>
     <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -158,28 +184,40 @@
 
   <!-- Script menú móvil -->
   <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const overlay = document.getElementById("overlay");
+    (function() {
+      const menuBtn = document.getElementById('menu-btn');
+      const overlay = document.getElementById('overlay');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('close-btn');
 
-    menuToggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
-      overlay.classList.toggle("active");
-    });
+      function openMenu() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded','true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded','false');
+        document.body.style.overflow = '';
+      }
 
-    overlay.addEventListener("click", () => {
-      mobileMenu.classList.remove("active");
-      overlay.classList.remove("active");
-    });
+      menuBtn && menuBtn.addEventListener('click', openMenu);
+      closeBtn && closeBtn.addEventListener('click', closeMenu);
+      overlay && overlay.addEventListener('click', closeMenu);
 
-    document.querySelectorAll("#mobileMenu a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", closeMenu);
       });
-    });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
   </script>
 
 </body>
 </html>
+
 
