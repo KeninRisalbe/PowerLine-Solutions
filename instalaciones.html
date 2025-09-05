@@ -121,7 +121,7 @@
       <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">
         Solicitar Información
       </a>
-      <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+      <a href="https://wa.me/51917689663?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
          target="_blank" 
          class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition flex items-center justify-center">
         💬 WhatsApp
@@ -199,7 +199,7 @@
   </main>
 
   <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+  <a href="https://wa.me/51917689663?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
      class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-3xl z-50" 
      target="_blank">
     💬
@@ -210,14 +210,14 @@
     <div class="container mx-auto text-center">
       <h3 class="text-2xl md:text-3xl font-bold mb-6">Contáctanos</h3>
       <p class="mb-6 text-gray-300 text-sm md:text-base">Solicita una cotización o asesoría personalizada.</p>
-      <form class="max-w-xl mx-auto space-y-4">
-        <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
-        <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
-        <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
-        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition w-full md:w-auto">Enviar</button>
+      <form id="whatsappForm" class="max-w-xl mx-auto space-y-4">
+        <input type="text" id="nombre" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
+        <input type="email" id="correo" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
+        <textarea id="mensaje" placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
+        <button type="submit" class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition w-full md:w-auto">Enviar por WhatsApp</button>
       </form>
       <div class="mt-6">
-        <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+        <a href="https://wa.me/51917689663?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
            target="_blank" 
            class="inline-block bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
           📲 Escríbenos por WhatsApp
@@ -231,8 +231,9 @@
     © 2025 Powerline Solutions – Todos los derechos reservados.
   </footer>
 
-  <!-- Scripts menú móvil -->
+  <!-- Scripts -->
   <script>
+    // Menú móvil
     (function() {
       const menuBtn = document.getElementById('menu-btn');
       const overlay = document.getElementById('overlay');
@@ -264,10 +265,29 @@
         if (e.key === 'Escape') closeMenu();
       });
     })();
+
+    // Formulario a WhatsApp
+    document.getElementById("whatsappForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let nombre = document.getElementById("nombre").value;
+      let correo = document.getElementById("correo").value;
+      let mensaje = document.getElementById("mensaje").value;
+
+      let url = "https://wa.me/51917689663?text=" 
+        + "📝 Nuevo formulario:%0A"
+        + "👤 Nombre: " + nombre + "%0A"
+        + "📧 Correo: " + correo + "%0A"
+        + "💬 Mensaje: " + mensaje;
+
+      window.open(url, '_blank');
+    });
   </script>
 
 </body>
 </html>
+
+
+
 
 
 
