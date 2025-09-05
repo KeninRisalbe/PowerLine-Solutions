@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tableros Eléctricos - Powerline Solutions</title>
+  <title>Instalaciones Eléctricas - Powerline Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -13,13 +13,9 @@
       --blanco: #FFFFFF;
     }
 
-    /* Quitar margen del body para evitar franja blanca */
-    body {
-      margin: 0;
-      padding: 0;
-    }
+    body { margin: 0; padding: 0; }
 
-    /* Overlay */
+    /* Overlay (fondo semitransparente) */
     #overlay {
       position: fixed;
       inset: 0;
@@ -29,10 +25,7 @@
       transition: opacity 0.25s ease;
       z-index: 40;
     }
-    #overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+    #overlay.active { opacity: 1; visibility: visible; }
 
     /* Sidebar móvil */
     #mobileMenu {
@@ -54,14 +47,10 @@
       display: block;
       padding: 14px 20px;
       color: #fff;
-      text-decoration: none;
       border-bottom: 1px solid rgba(255,255,255,0.04);
       transition: background .18s;
     }
-    #mobileMenu a:hover {
-      background: rgba(255,255,255,0.03);
-      color: var(--azul-electrico);
-    }
+    #mobileMenu a:hover { background: rgba(255,255,255,0.03); color: var(--azul-electrico); }
 
     /* WhatsApp Floating Button */
     .whatsapp-fab {
@@ -84,12 +73,9 @@
     }
     .whatsapp-fab:active { transform: scale(.98); }
 
-    /* Header fijo */
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
     main { padding-top: 84px; }
-
-    /* Mejora legibilidad hero */
-    .hero-text { max-width: 56ch; margin-left: auto; margin-right: auto; }
+    .hero-text { max-width: 56ch; margin: auto; }
 
     @media (min-width: 768px) {
       #mobileMenu, #overlay { display: none; }
@@ -104,7 +90,7 @@
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
 
       <!-- Botón hamburguesa -->
-      <button id="menu-btn" class="md:hidden text-white" aria-label="Abrir menú" aria-expanded="false">
+      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16"/>
@@ -115,84 +101,110 @@
       <nav class="hidden md:block">
         <ul class="flex space-x-6 font-medium">
           <li><a href="index.html" class="hover:text-[var(--azul-electrico)]">Inicio</a></li>
-          <li><a href="instalaciones.html" class="hover:text-[var(--azul-electrico)]">Instalaciones</a></li>
+          <li><a href="instalaciones.html" class="text-[var(--azul-electrico)] font-semibold">Instalaciones</a></li>
           <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
-          <li><a href="tableros.html" class="text-[var(--azul-electrico)] font-semibold">Tableros</a></li>
+          <li><a href="tableros.html" class="hover:text-[var(--azul-electrico)]">Tableros</a></li>
           <li><a href="index.html#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Overlay + Sidebar móvil -->
+  <!-- Overlay + Sidebar -->
   <div id="overlay"></div>
   <aside id="mobileMenu">
-    <div class="px-4 flex items-center justify-between mb-2">
-      <h2 class="text-xl font-bold text-white">Menú</h2>
-      <button id="close-btn" class="text-white text-2xl">✕</button>
+    <div class="px-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-xl font-bold text-white">Menú</h2>
+        <button id="close-btn" aria-label="Cerrar menú" class="text-white text-2xl">✕</button>
+      </div>
     </div>
     <nav class="mt-2">
-      <a href="index.html" class="pl-6">Inicio</a>
-      <a href="instalaciones.html" class="pl-6">Instalaciones</a>
-      <a href="planos.html" class="pl-6">Planos</a>
-      <a href="tableros.html" class="pl-6 font-semibold text-[var(--azul-electrico)]">Tableros</a>
-      <a href="index.html#contacto" class="pl-6">Contacto</a>
+      <a href="index.html">Inicio</a>
+      <a href="instalaciones.html" class="font-semibold text-[var(--azul-electrico)]">Instalaciones</a>
+      <a href="planos.html">Planos</a>
+      <a href="tableros.html">Tableros</a>
+      <a href="index.html#contacto">Contacto</a>
     </nav>
   </aside>
 
   <main>
     <!-- Hero -->
     <section class="bg-[var(--azul-electrico)] text-white text-center py-20">
-      <div class="px-6">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-text">Tableros Eléctricos</h2>
-        <p class="text-lg max-w-xl mx-auto hero-text">
-          Fabricamos y diseñamos tableros eléctricos confiables y seguros para todo tipo de proyectos.
-        </p>
-      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-text">Instalaciones Eléctricas</h2>
+      <p class="text-lg max-w-xl mx-auto hero-text">
+        Desde viviendas hasta edificios y comercios, realizamos instalaciones seguras, modernas y confiables.
+      </p>
     </section>
 
     <!-- Servicios -->
     <section class="py-14 container mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-6 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
+      <h3 class="text-3xl font-bold text-center mb-10 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Tableros de Distribución</h4>
+          <h4 class="text-xl font-semibold mb-3">Instalaciones Básicas</h4>
           <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Tableros principales y secundarios</li>
-            <li>Tableros trifásicos y monofásicos</li>
-            <li>Protecciones diferenciales y termomagnéticas</li>
+            <li>Puntos de luz (focos, lámparas, LED)</li>
+            <li>Puntos de tomacorrientes</li>
+            <li>Interruptores simples, dobles y triples</li>
+            <li>Circuitos de iluminación y fuerza</li>
           </ul>
         </div>
+
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Tableros de Control</h4>
+          <h4 class="text-xl font-semibold mb-3">Instalaciones Especiales</h4>
           <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Automatización de procesos</li>
-            <li>Arranques directos y estrella-triángulo</li>
-            <li>Integración con PLC y HMI</li>
+            <li>Tomas para cocina, horno, terma y aire acondicionado</li>
+            <li>Porteros eléctricos y videoporteros</li>
+            <li>Timbres y alarmas simples</li>
           </ul>
         </div>
+
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Servicios Adicionales</h4>
+          <h4 class="text-xl font-semibold mb-3">Cableado y Canalización</h4>
           <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Mantenimiento preventivo y correctivo</li>
-            <li>Expansión y modernización de tableros</li>
-            <li>Certificación de instalaciones</li>
+            <li>Cableado empotrado y superficial</li>
+            <li>Instalación de canaletas y tuberías</li>
+            <li>Renovación de cableado deteriorado</li>
+          </ul>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+          <h4 class="text-xl font-semibold mb-3">Tableros Domiciliarios</h4>
+          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+            <li>Instalación de tableros eléctricos básicos</li>
+            <li>Protecciones térmicas y diferenciales</li>
+            <li>Expansión de circuitos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+          <h4 class="text-xl font-semibold mb-3">Seguridad Eléctrica</h4>
+          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+            <li>Instalación de puesta a tierra</li>
+            <li>Pararrayos</li>
+            <li>Corrección de fugas y sobrecargas</li>
+          </ul>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+          <h4 class="text-xl font-semibold mb-3">Edificios y Comercios</h4>
+          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+            <li>Instalaciones trifásicas</li>
+            <li>Sistemas de emergencia e iluminación autónoma</li>
+            <li>Cableado estructurado (redes y datos)</li>
           </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Botón WhatsApp flotante -->
-  <a
-    href="https://wa.me/51983527661?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20tableros%20el%C3%A9ctricos."
-    target="_blank" rel="noopener noreferrer"
-    class="whatsapp-fab" aria-label="Chatear por WhatsApp">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 .02 5.36.02 12c0 2.12.55 4.18 1.6 5.99L0 24l6.38-1.66A11.96 11.96 0 0012 24c6.63 0 12-5.36 12-12 0-3.2-1.25-6.19-3.48-8.52z" fill="#fff" opacity="0.08"/>
-      <path d="M17.7 14.8c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.33.22-.62.07-1.7-.86-2.8-1.54-3.92-3.5-.3-.54.3-.5.86-1.65.1-.25.04-.43-.02-.6-.06-.17-.67-1.64-.92-2.25-.24-.59-.49-.51-.67-.52l-.57-.01c-.19 0-.5.07-.76.35-.27.28-1.03 1.01-1.03 2.46 0 1.44 1.06 2.83 1.2 3.03.14.2 2.08 3.36 5.04 4.58 2.12.92 3.38.98 3.68.93.3-.04.97-.39 1.11-.77.14-.38.14-.71.1-.77-.04-.06-.3-.11-.6-.25z" fill="#fff"/>
-    </svg>
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/51983527661?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20instalaciones%20el%C3%A9ctricas."
+     target="_blank" rel="noopener noreferrer"
+     class="whatsapp-fab" aria-label="Chatear por WhatsApp">
+    💬
   </a>
 
   <!-- Footer -->
@@ -201,7 +213,7 @@
     <p class="text-sm">© 2025 Powerline Solutions. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Script menú -->
+  <!-- Scripts -->
   <script>
     (function() {
       const menuBtn = document.getElementById('menu-btn');
@@ -222,17 +234,18 @@
         document.body.style.overflow = '';
       }
 
-      menuBtn && menuBtn.addEventListener('click', openMenu);
-      closeBtn && closeBtn.addEventListener('click', closeMenu);
-      overlay && overlay.addEventListener('click', closeMenu);
+      menuBtn?.addEventListener('click', openMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+      overlay?.addEventListener('click', closeMenu);
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
       });
 
-      const links = mobileMenu.querySelectorAll('a');
-      links.forEach(a => a.addEventListener('click', closeMenu));
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     })();
   </script>
 </body>
 </html>
+
+
