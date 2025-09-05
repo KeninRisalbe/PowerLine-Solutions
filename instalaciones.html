@@ -15,67 +15,46 @@
 
     body { margin: 0; padding: 0; }
 
-    /* Overlay (fondo semitransparente) */
+    /* Corrige franja blanca: header fijo + espacio en main */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
+    main { padding-top: 84px; }
+
+    /* Overlay menú móvil */
     #overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.45);
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0; visibility: hidden;
       transition: opacity 0.25s ease;
       z-index: 40;
     }
     #overlay.active { opacity: 1; visibility: visible; }
 
-    /* Sidebar móvil */
     #mobileMenu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: clamp(220px, 30vw, 320px);
+      position: fixed; top: 0; left: 0;
+      height: 100%; width: clamp(220px,30vw,320px);
       background: var(--azul-oscuro);
       transform: translateX(-110%);
-      transition: transform 0.28s ease;
-      z-index: 50;
-      padding-top: 84px;
-      -webkit-overflow-scrolling: touch;
+      transition: transform .28s ease;
+      z-index: 50; padding-top: 84px;
       overflow-y: auto;
     }
     #mobileMenu.active { transform: translateX(0); }
     #mobileMenu a {
-      display: block;
-      padding: 14px 20px;
-      color: #fff;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: background .18s;
+      display: block; padding: 14px 20px;
+      color: #fff; border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    #mobileMenu a:hover { background: rgba(255,255,255,0.03); color: var(--azul-electrico); }
+    #mobileMenu a:hover { background: rgba(255,255,255,0.05); color: var(--azul-electrico); }
 
-    /* WhatsApp Floating Button */
     .whatsapp-fab {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
+      position: fixed; right: 16px; bottom: 16px;
+      width: 56px; height: 56px; border-radius: 9999px;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: bold;
       z-index: 60;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      background: #25D366;
-      color: #fff;
       box-shadow: 0 8px 18px rgba(37,211,102,0.18);
-      transition: transform .12s ease, box-shadow .12s ease;
-      text-decoration: none;
-      font-weight: 700;
     }
-    .whatsapp-fab:active { transform: scale(.98); }
-
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
-    main { padding-top: 84px; }
-    .hero-text { max-width: 56ch; margin: auto; }
+    .whatsapp-fab:hover { background: #20bd5a; }
 
     @media (min-width: 768px) {
       #mobileMenu, #overlay { display: none; }
@@ -113,15 +92,13 @@
   <!-- Overlay + Sidebar -->
   <div id="overlay"></div>
   <aside id="mobileMenu">
-    <div class="px-4">
-      <div class="flex items-center justify-between mb-2">
-        <h2 class="text-xl font-bold text-white">Menú</h2>
-        <button id="close-btn" aria-label="Cerrar menú" class="text-white text-2xl">✕</button>
-      </div>
+    <div class="px-4 flex justify-between items-center mb-2">
+      <h2 class="text-xl font-bold text-white">Menú</h2>
+      <button id="close-btn" aria-label="Cerrar menú" class="text-white text-2xl">✕</button>
     </div>
     <nav class="mt-2">
       <a href="index.html">Inicio</a>
-      <a href="instalaciones.html" class="font-semibold text-[var(--azul-electrico)]">Instalaciones</a>
+      <a href="instalaciones.html" class="text-[var(--azul-electrico)] font-semibold">Instalaciones</a>
       <a href="planos.html">Planos</a>
       <a href="tableros.html">Tableros</a>
       <a href="index.html#contacto">Contacto</a>
@@ -131,8 +108,8 @@
   <main>
     <!-- Hero -->
     <section class="bg-[var(--azul-electrico)] text-white text-center py-20 px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-text">Instalaciones Eléctricas</h2>
-      <p class="text-lg max-w-xl mx-auto hero-text mb-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Instalaciones Eléctricas</h2>
+      <p class="text-lg max-w-xl mx-auto mb-6">
         Desde viviendas hasta edificios y comercios, realizamos instalaciones seguras, modernas y confiables.
       </p>
       <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -152,9 +129,10 @@
       <h3 class="text-3xl font-bold text-center mb-10 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Aquí mantenemos tus 6 servicios originales -->
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Instalaciones Básicas</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Puntos de luz (focos, lámparas, LED)</li>
             <li>Puntos de tomacorrientes</li>
             <li>Interruptores simples, dobles y triples</li>
@@ -164,7 +142,7 @@
 
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Instalaciones Especiales</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Tomas para cocina, horno, terma y aire acondicionado</li>
             <li>Porteros eléctricos y videoporteros</li>
             <li>Timbres y alarmas simples</li>
@@ -173,7 +151,7 @@
 
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Cableado y Canalización</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Cableado empotrado y superficial</li>
             <li>Instalación de canaletas y tuberías</li>
             <li>Renovación de cableado deteriorado</li>
@@ -182,7 +160,7 @@
 
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Tableros Domiciliarios</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Instalación de tableros eléctricos básicos</li>
             <li>Protecciones térmicas y diferenciales</li>
             <li>Expansión de circuitos</li>
@@ -191,7 +169,7 @@
 
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Seguridad Eléctrica</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Instalación de puesta a tierra</li>
             <li>Pararrayos</li>
             <li>Corrección de fugas y sobrecargas</li>
@@ -200,7 +178,7 @@
 
         <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
           <h4 class="text-xl font-semibold mb-3">Edificios y Comercios</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
+          <ul class="list-disc pl-5 text-gray-600 space-y-1">
             <li>Instalaciones trifásicas</li>
             <li>Sistemas de emergencia e iluminación autónoma</li>
             <li>Cableado estructurado (redes y datos)</li>
@@ -211,19 +189,19 @@
   </main>
 
   <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/51983527661?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20instalaciones%20el%C3%A9ctricas."
+  <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20instalaciones%20eléctricas."
      target="_blank" rel="noopener noreferrer"
-     class="whatsapp-fab" aria-label="Chatear por WhatsApp">
-    💬
-  </a>
+     class="whatsapp-fab" aria-label="Chatear por WhatsApp">💬</a>
 
   <!-- Footer -->
   <footer class="bg-[var(--azul-oscuro)] text-white py-6 mt-12 text-center px-4">
-    <p class="mb-2">📞 <strong>+51 983527661</strong> &nbsp; | &nbsp; 📧 <a href="mailto:powerlinesolutionperu@gmail.com" class="underline">powerlinesolutionperu@gmail.com</a></p>
+    <p class="mb-2">📞 <strong>+51 983527661</strong> &nbsp; | &nbsp; 📧 
+      <a href="mailto:powerlinesolutionperu@gmail.com" class="underline">powerlinesolutionperu@gmail.com</a>
+    </p>
     <p class="text-sm">© 2025 Powerline Solutions. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
     (function() {
       const menuBtn = document.getElementById('menu-btn');
@@ -247,16 +225,13 @@
       menuBtn?.addEventListener('click', openMenu);
       closeBtn?.addEventListener('click', closeMenu);
       overlay?.addEventListener('click', closeMenu);
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
-
+      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
       mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     })();
   </script>
 </body>
 </html>
+
 
 
 
