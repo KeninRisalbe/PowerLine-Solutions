@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instalaciones Eléctricas - Powerline Solutions</title>
+  <title>Instalaciones - Powerline Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -13,9 +13,12 @@
       --blanco: #FFFFFF;
     }
 
-    body { margin: 0; padding: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
 
-    /* Overlay (fondo semitransparente) */
+    /* Overlay */
     #overlay {
       position: fixed;
       inset: 0;
@@ -25,7 +28,10 @@
       transition: opacity 0.25s ease;
       z-index: 40;
     }
-    #overlay.active { opacity: 1; visibility: visible; }
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
 
     /* Sidebar móvil */
     #mobileMenu {
@@ -33,7 +39,7 @@
       top: 0;
       left: 0;
       height: 100%;
-      width: clamp(220px, 30vw, 320px);
+      width: clamp(220px, 50vw, 320px);
       background: var(--azul-oscuro);
       transform: translateX(-110%);
       transition: transform 0.28s ease;
@@ -42,40 +48,24 @@
       -webkit-overflow-scrolling: touch;
       overflow-y: auto;
     }
-    #mobileMenu.active { transform: translateX(0); }
+    #mobileMenu.active {
+      transform: translateX(0);
+    }
     #mobileMenu a {
       display: block;
       padding: 14px 20px;
       color: #fff;
+      text-decoration: none;
       border-bottom: 1px solid rgba(255,255,255,0.04);
       transition: background .18s;
     }
-    #mobileMenu a:hover { background: rgba(255,255,255,0.03); color: var(--azul-electrico); }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-fab {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      background: #25D366;
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(37,211,102,0.18);
-      transition: transform .12s ease, box-shadow .12s ease;
-      text-decoration: none;
-      font-weight: 700;
+    #mobileMenu a:hover {
+      background: rgba(255,255,255,0.03);
+      color: var(--azul-electrico);
     }
-    .whatsapp-fab:active { transform: scale(.98); }
 
-    header { margin: 0; padding: 0; }
-    main { margin: 0; padding: 0; }
-    .hero-text { max-width: 56ch; margin: auto; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; }
+    main { padding-top: 84px; }
 
     @media (min-width: 768px) {
       #mobileMenu, #overlay { display: none; }
@@ -85,17 +75,9 @@
 <body class="bg-white text-gray-900 font-sans antialiased">
 
   <!-- Header -->
-  <header class="bg-[var(--azul-oscuro)] text-white shadow-md">
+  <header class="bg-[var(--azul-oscuro)] text-white">
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">⚡ Powerline Solutions</h1>
-
-      <!-- Botón hamburguesa -->
-      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
 
       <!-- Menú desktop -->
       <nav class="hidden md:block">
@@ -104,9 +86,17 @@
           <li><a href="instalaciones.html" class="text-[var(--azul-electrico)] font-semibold">Instalaciones</a></li>
           <li><a href="planos.html" class="hover:text-[var(--azul-electrico)]">Planos</a></li>
           <li><a href="tableros.html" class="hover:text-[var(--azul-electrico)]">Tableros</a></li>
-          <li><a href="index.html#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
+          <li><a href="#contacto" class="hover:text-[var(--azul-electrico)]">Contacto</a></li>
         </ul>
       </nav>
+
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </header>
 
@@ -116,7 +106,7 @@
     <div class="px-4">
       <div class="flex items-center justify-between mb-2">
         <h2 class="text-xl font-bold text-white">Menú</h2>
-        <button id="close-btn" aria-label="Cerrar menú" class="text-white text-2xl">✕</button>
+        <button id="close-btn" class="text-white text-2xl">✕</button>
       </div>
     </div>
     <nav class="mt-2">
@@ -124,96 +114,79 @@
       <a href="instalaciones.html" class="font-semibold text-[var(--azul-electrico)]">Instalaciones</a>
       <a href="planos.html">Planos</a>
       <a href="tableros.html">Tableros</a>
-      <a href="index.html#contacto">Contacto</a>
+      <a href="#contacto">Contacto</a>
     </nav>
   </aside>
 
-  <main>
-    <!-- Hero -->
-    <section class="bg-[var(--azul-electrico)] text-white text-center py-20 m-0">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-text">Instalaciones Eléctricas</h2>
-      <p class="text-lg max-w-xl mx-auto hero-text">
-        Desde viviendas hasta edificios y comercios, realizamos instalaciones seguras, modernas y confiables.
-      </p>
-    </section>
+  <!-- Hero -->
+  <section class="bg-[var(--azul-electrico)] text-white text-center py-20 px-4">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4">Instalaciones Eléctricas Profesionales</h2>
+    <p class="text-base md:text-lg mb-6">Montaje seguro y certificado para proyectos residenciales, comerciales e industriales.</p>
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
+      <a href="#contacto" class="bg-white text-[var(--azul-electrico)] font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-200 transition">
+        Solicitar Información
+      </a>
+      <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+         target="_blank" 
+         class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition flex items-center justify-center">
+        💬 WhatsApp
+      </a>
+    </div>
+  </section>
 
-    <!-- Servicios -->
-    <section class="py-14 container mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-10 text-[var(--azul-oscuro)]">Nuestros Servicios</h3>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Instalaciones Básicas</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Puntos de luz (focos, lámparas, LED)</li>
-            <li>Puntos de tomacorrientes</li>
-            <li>Interruptores simples, dobles y triples</li>
-            <li>Circuitos de iluminación y fuerza</li>
-          </ul>
-        </div>
-
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Instalaciones Especiales</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Tomas para cocina, horno, terma y aire acondicionado</li>
-            <li>Porteros eléctricos y videoporteros</li>
-            <li>Timbres y alarmas simples</li>
-          </ul>
-        </div>
-
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Cableado y Canalización</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Cableado empotrado y superficial</li>
-            <li>Instalación de canaletas y tuberías</li>
-            <li>Renovación de cableado deteriorado</li>
-          </ul>
-        </div>
-
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Tableros Domiciliarios</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Instalación de tableros eléctricos básicos</li>
-            <li>Protecciones térmicas y diferenciales</li>
-            <li>Expansión de circuitos</li>
-          </ul>
-        </div>
-
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Seguridad Eléctrica</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Instalación de puesta a tierra</li>
-            <li>Pararrayos</li>
-            <li>Corrección de fugas y sobrecargas</li>
-          </ul>
-        </div>
-
-        <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
-          <h4 class="text-xl font-semibold mb-3">Edificios y Comercios</h4>
-          <ul class="text-gray-600 list-disc pl-5 space-y-1">
-            <li>Instalaciones trifásicas</li>
-            <li>Sistemas de emergencia e iluminación autónoma</li>
-            <li>Cableado estructurado (redes y datos)</li>
-          </ul>
-        </div>
+  <!-- Contenido de Instalaciones -->
+  <main class="py-16 md:py-20 container mx-auto px-4 md:px-6">
+    <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--azul-oscuro)]">Servicios de Instalaciones</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Residenciales</h4>
+        <p class="text-gray-600 text-sm md:text-base">Instalaciones eléctricas seguras para hogares, con materiales certificados y personal especializado.</p>
       </div>
-    </section>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Comerciales</h4>
+        <p class="text-gray-600 text-sm md:text-base">Soluciones energéticas para oficinas, locales y espacios comerciales con alta eficiencia.</p>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl p-6 border-t-4 border-[var(--azul-electrico)]">
+        <h4 class="text-lg md:text-xl font-semibold mb-3">Industriales</h4>
+        <p class="text-gray-600 text-sm md:text-base">Montaje y mantenimiento de sistemas eléctricos en plantas industriales con estándares internacionales.</p>
+      </div>
+    </div>
   </main>
 
   <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/51983527661?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20instalaciones%20el%C3%A9ctricas."
-     target="_blank" rel="noopener noreferrer"
-     class="whatsapp-fab" aria-label="Chatear por WhatsApp">
+  <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-3xl z-50" 
+     target="_blank">
     💬
   </a>
 
+  <!-- Contacto -->
+  <section id="contacto" class="bg-[var(--azul-oscuro)] text-white py-16 md:py-20 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-2xl md:text-3xl font-bold mb-6">Contáctanos</h3>
+      <p class="mb-6 text-gray-300 text-sm md:text-base">Solicita una cotización o asesoría personalizada.</p>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-3 rounded-lg text-black" required>
+        <input type="email" placeholder="Correo" class="w-full p-3 rounded-lg text-black" required>
+        <textarea placeholder="Mensaje" rows="4" class="w-full p-3 rounded-lg text-black" required></textarea>
+        <button class="bg-[var(--azul-electrico)] hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition w-full md:w-auto">Enviar</button>
+      </form>
+      <div class="mt-6">
+        <a href="https://wa.me/51983527661?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios." 
+           target="_blank" 
+           class="inline-block bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+          📲 Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-[var(--azul-oscuro)] text-white py-6 mt-12 text-center px-4">
-    <p class="mb-2">📞 <strong>+51 983527661</strong> &nbsp; | &nbsp; 📧 <a href="mailto:powerlinesolutionperu@gmail.com" class="underline">powerlinesolutionperu@gmail.com</a></p>
-    <p class="text-sm">© 2025 Powerline Solutions. Todos los derechos reservados.</p>
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
+    © 2025 Powerline Solutions – Todos los derechos reservados.
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts menú móvil -->
   <script>
     (function() {
       const menuBtn = document.getElementById('menu-btn');
@@ -234,18 +207,22 @@
         document.body.style.overflow = '';
       }
 
-      menuBtn?.addEventListener('click', openMenu);
-      closeBtn?.addEventListener('click', closeMenu);
-      overlay?.addEventListener('click', closeMenu);
+      menuBtn && menuBtn.addEventListener('click', openMenu);
+      closeBtn && closeBtn.addEventListener('click', closeMenu);
+      overlay && overlay.addEventListener('click', closeMenu);
+
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
       });
-
-      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     })();
   </script>
+
 </body>
 </html>
+
 
 
